@@ -27,4 +27,4 @@ Training Rules:
 - If stuck >10 min, write bad SQL, then improve
 
 Tomorrows Objective:
-- Load one play-by-play CSV into DuckDB and run 3 SELECT queries.
+- Load the raw game JSON files into a raw_games table in DuckDB and verify I can query the row count.
