@@ -1,11 +1,20 @@
+# Secrets
 .env
 
+# OS / editor noise
 .DS_Store
-
 __pycache__/
-*.pyc
+.vscode/
 
+# Python artifacts
+*.pyc
+*.pyd
+
+# DuckDB artifacts
+*.duckdb
+*.wal
+*.tmp
+
+# Generated data (reproducible)
 data/raw/
 data/duckdb/
-
-*.duckdb
