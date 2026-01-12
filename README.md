@@ -21,4 +21,4 @@ Rules:
 - No dashboards until warehouse works
 
 Tomorrows Objective:
-- Create the first staging table (stg_games) by extracting and typing core game fields from raw.raw_games.payload into a clean, relational schema.
+- Build a season-level team fact mart and validate aggregation logic using Week 1 data.
