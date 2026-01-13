@@ -20,5 +20,8 @@ Rules:
 - Every session produces an artifact
 - No dashboards until warehouse works
 
+### Ingest games (example)
+python ingest_games.py --season 2024 --week 1
+
 Tomorrows Objective:
 - Build a season-level team fact mart and validate aggregation logic using Week 1 data.
