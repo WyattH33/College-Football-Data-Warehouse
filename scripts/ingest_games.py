@@ -16,11 +16,25 @@ def fetch_games(year, week, seasonType="regular"):
     response.raise_for_status()
     return response.json()
 
-def save_raw_games(data, year, week):
-    path = f"data/raw/games/year={year}/week={week}.json"
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
+
+from pathlib import Path
+
+def save_raw_games(data, season, week, force=False):
+    output_path = Path(f"data/raw/games/season={season}/week={week}.json")
+
+    if output_path.exists() and not force:
+        print(f"File exists: {output_path}. Use --force to overwrite.")
+        return
+
+
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(output_path, "w") as f:
         json.dump(data, f)
+
+    print(f"Saved raw games to {output_path}")
+
 
 
 if __name__ == "__main__":
@@ -30,10 +44,13 @@ if __name__ == "__main__":
     parser.add_argument("--season", type=int, default=2024, help="Season year (e.g., 2024)")
     parser.add_argument("--week", type=int, default=1, help="Week number (e.g., 1)")
     parser.add_argument("--seasonType", type=str, default="regular", help="Season type: regular, postseason, etc.")
+    parser.add_argument("--force", action="store_true", help="Overwrite existing raw files")
+
 
     args = parser.parse_args()
 
     data = fetch_games(args.season, args.week, seasonType=args.seasonType)
-    save_raw_games(data, args.season, args.week)
+    # inside __main__
+    save_raw_games(data, args.season, args.week, force=args.force)
     print(f"Ingested games: season={args.season} week={args.week} seasonType={args.seasonType}")
 

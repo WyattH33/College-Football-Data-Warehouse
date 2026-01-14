@@ -1,4 +1,3 @@
--- sql/marts/002_build_fct_team_games.sql
 
 CREATE SCHEMA IF NOT EXISTS marts;
 
