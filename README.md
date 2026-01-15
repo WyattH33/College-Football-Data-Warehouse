@@ -24,4 +24,4 @@ Rules:
 python ingest_games.py --season 2024 --week 1
 
 Tomorrows Objective:
-- Build a season-level team fact mart and validate aggregation logic using Week 1 data.
+Ingest the game/boxscore endpoint one request per game_id into the raw layer and build the first staging tables (stg_team_game_ppa, stg_team_game_success_rates) as the foundation for an advanced team-game mart.
